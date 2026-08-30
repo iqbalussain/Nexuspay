@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'router/app_router.dart';
-import 'theme/app_theme.dart';
+import 'theme/nexus_theme.dart';
 
-/// Root widget. Deliberately thin: theme and routing are the only two
-/// things it owns directly, per architecture §7 ("use a feature-first
-/// Clean Architecture / MVVM-style structure") — everything else lives in
-/// features/ and is reached only through the router.
 class NexusPayApp extends ConsumerWidget {
   const NexusPayApp({super.key});
 
@@ -18,9 +14,8 @@ class NexusPayApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'NexusPay',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: ThemeMode.system,
+      theme: NexusTheme.dark,       // dark-first; no light theme until branding confirmed
+      themeMode: ThemeMode.dark,
       routerConfig: router,
     );
   }
